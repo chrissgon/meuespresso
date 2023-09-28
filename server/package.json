@@ -1,14 +1,14 @@
 {
   "name": "meuexpresso-server",
   "version": "1.0.0",
-  "description": "",
+  "description": "A server from an e-commerce project for coffee sales ☕🛒",
   "type": "module",
   "main": "index.js",
   "scripts": {
     "dev": "node .",
     "test": "npx mocha -w --parallel",
     "tests": "npx mocha -w --parallel **/**/*.test.js",
-    "tests:cov": "npx c8 npx mocha --parallel **/**/*.test.js"
+    "tests:cov": "npx c8 npx mocha --parallel **/unit/*.test.js"
   },
   "devDependencies": {
     "c8": "^8.0.0",
@@ -21,7 +21,6 @@
     "express": "^4.18.2",
     "mongodb": "^6.1.0"
   },
-  "keywords": [],
   "author": "Christopher Gonçalves <chrissgon.dev@gmail.com>",
   "license": "ISC"
 }
