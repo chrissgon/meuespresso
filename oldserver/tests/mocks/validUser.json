@@ -1,0 +1,49 @@
+{
+  "userID": "446c5a85-f243-49f5-b31b-90e34e982411",
+  "email": "christopher@gmail.com",
+  "password": "123456",
+  "name": "Christopher Gonçalves",
+  "address": "Avenida Castelo Branco",
+  "addressNumber": 254,
+  "addressComplement": "Próximo a estação",
+  "cart": [
+    {
+      "cartID": "d92e4cc8-414e-492c-8932-28830775652b",
+      "productID": "d5321891-f36c-462b-8a77-b718cfab3205",
+      "name": "PARIS ESPRESSO (10 CÁPSULAS)",
+      "price": 34.0,
+      "quantity": 1,
+      "image": "https://www.nespresso.com/shared_res/agility/n-components/B2C-enriched-pdp-wex-2022/paris-espresso/main-image_L.png"
+    }
+  ],
+  "orders": [
+    {
+      "orderID": "0b8e0803-71f6-4ada-a0ad-bacd77493a9b",
+      "productID": "b14fb0d8-6afc-4d5b-9b44-14b29189798b",
+      "name": "STOCKHOLM FORTISSIO LUNGO (10 CÁPSULAS)",
+      "price": 35.0,
+      "quantity": 3,
+      "image": "https://www.nespresso.com/ecom/medias/sys_master/public/13753029689374/C-0686-Main-PDP-Lungo-Stockholm-OL.jpg",
+      "address": "Avenida Castelo Branco",
+      "addressNumber": 254,
+      "addressComplement": "Próximo a estação",
+      "shipping": 12.0,
+      "deliveredAt": "2023-09-08T18:36:10.656Z",
+      "createdAt": "2023-09-08T18:25:27.892Z"
+    },
+    {
+      "orderID": "49f82597-0b4f-4b0f-a88b-24b688111794",
+      "productID": "4bac3191-b074-47bf-b043-26964fe88176",
+      "name": "TOKYO VIVALTO LUNGO (10 CÁPSULAS)",
+      "price": 37.0,
+      "quantity": 1,
+      "image": "https://www.nespresso.com/shared_res/agility/n-components/B2C-enriched-pdp-wex-2022/istanbul-espresso/main-image_L.png",
+      "address": "Avenida Castelo Branco",
+      "addressNumber": 254,
+      "addressComplement": "Próximo a estação",
+      "shipping": 12.0,
+      "deliveredAt": "2023-09-08T18:36:10.656Z",
+      "createdAt": "2023-09-08T18:25:27.892Z"
+    }
+  ]
+}
