@@ -22,22 +22,21 @@ export default class BuyUseCase {
       addressNumber,
       addressComplement,
       shipping,
-      resetCart,
     });
 
     if (valid instanceof Error) return false;
 
     // false payment provider
     const invalidPayment = !(await this.paymentAdapter.validate());
-
+    
     if (invalidPayment) return false;
-
-    const paymentHasAnError = !(await this.paymentAdapter.new());
-
+    
+    const paymentHasAnError = !(await this.paymentAdapter.process());
+    
     if (paymentHasAnError) return false;
-
+    
     const orders = [];
-
+    
     for (const { productID, quantity } of products) {
       const orderID = await this.userRepo.setOrder({
         userID,
@@ -48,9 +47,9 @@ export default class BuyUseCase {
         quantity,
         shipping,
       });
-
+      
       if (!orderID) return false;
-
+      
       orders.push(orderID);
     }
 

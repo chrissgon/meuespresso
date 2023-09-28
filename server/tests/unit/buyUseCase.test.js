@@ -156,7 +156,7 @@ describe("BuyUseCase Unit Test", () => {
       .stub(buyUseCase.paymentAdapter, buyUseCase.paymentAdapter.validate.name)
       .resolves(true);
     sandbox
-      .stub(buyUseCase.paymentAdapter, buyUseCase.paymentAdapter.new.name)
+      .stub(buyUseCase.paymentAdapter, buyUseCase.paymentAdapter.process.name)
       .resolves(false);
 
     const have = await buyUseCase.execute({});
@@ -183,7 +183,7 @@ describe("BuyUseCase Unit Test", () => {
       .resolves(true);
 
     sandbox
-      .stub(buyUseCase.paymentAdapter, buyUseCase.paymentAdapter.new.name)
+      .stub(buyUseCase.paymentAdapter, buyUseCase.paymentAdapter.process.name)
       .resolves(true);
 
     sandbox
@@ -213,7 +213,7 @@ describe("BuyUseCase Unit Test", () => {
       .resolves(true);
 
     sandbox
-      .stub(buyUseCase.paymentAdapter, buyUseCase.paymentAdapter.new.name)
+      .stub(buyUseCase.paymentAdapter, buyUseCase.paymentAdapter.process.name)
       .resolves(true);
 
     sandbox
@@ -248,7 +248,7 @@ describe("BuyUseCase Unit Test", () => {
       .resolves(true);
 
     sandbox
-      .stub(buyUseCase.paymentAdapter, buyUseCase.paymentAdapter.new.name)
+      .stub(buyUseCase.paymentAdapter, buyUseCase.paymentAdapter.process.name)
       .resolves(true);
 
     sandbox

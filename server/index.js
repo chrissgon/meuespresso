@@ -1,7 +1,7 @@
 "use strict";
 
-import api from "./api.js";
+import Router from "./router.js";
 
 const port = 3000;
 
-api.listen(port);
+new Router().httpAdapter.listen(port);

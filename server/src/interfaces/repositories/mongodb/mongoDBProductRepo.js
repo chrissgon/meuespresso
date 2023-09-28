@@ -7,11 +7,7 @@ export default class MongoDBProductRepo extends MongoDBBaseRepo {
     super({ mongodb, collection: "product" });
   }
 
-  login({ email, password }) {
-    return this.db.findOne({ email, password });
-  }
-
-  getByID({ userID }) {
-    return this.db.findOne({ userID });
+  getByID({ productID }) {
+    return this.db.findOne({ productID });
   }
 }

@@ -7,7 +7,7 @@ export default class PaymentAdapter {
     return new Promise((resolve) => setTimeout(resolve(true), 2000));
   }
 
-  async new() {
+  async process() {
     return new Promise((resolve) => setTimeout(resolve(true), 5000));
   }
 }

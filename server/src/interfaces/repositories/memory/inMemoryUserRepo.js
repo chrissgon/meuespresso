@@ -1,5 +1,6 @@
 "use strict";
 
+import { randomUUID } from "node:crypto";
 import InMemoryBaseRepo from "./inMemoryBaseRepo.js";
 import InMemoryProductRepo from "./inMemoryProductRepo.js";
 
@@ -88,7 +89,7 @@ export default class InMemoryUserRepo extends InMemoryBaseRepo {
 
     if (index === -1) return;
 
-    const product = this.InMemoryProductRepo.getByID({ productID });
+    const product = this.inMemoryProductRepo.getByID({ productID });
 
     if (!product) return;
 

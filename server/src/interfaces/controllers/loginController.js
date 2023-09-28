@@ -6,11 +6,10 @@ export default class LoginController {
   }
 
   async handle(req, res) {
-    const { email, password } = req.body;
-    const user = await this.loginUseCase.execute({ email, password });
+    const user = await this.loginUseCase.execute(req.body);
 
     if (!user) {
-      res.status(401).send("unauthorized")
+      res.status(401).send("unauthorized");
       return;
     }
 

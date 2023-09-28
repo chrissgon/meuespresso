@@ -4,15 +4,16 @@ import { describe, it } from "mocha";
 import { expect } from "chai";
 import request from "supertest";
 
-import api from "../../api.js";
+import Router from "../../router.js";
 
 import validUser from "../mocks/validUser.json" assert { type: "json" };
 
 const mocks = { validUser };
+const router = new Router()
 
 describe("POST /login", () => {
   it("should request POST /login route and return HTTP 401", async () => {
-    const res = await request(api.lib).post("/login").expect(401);
+    const res = await request(router.httpAdapter.lib).post("/login").expect(401);
 
     expect(res.text).to.equal("unauthorized");
   });
@@ -20,7 +21,7 @@ describe("POST /login", () => {
   it("should request POST /login route and return HTTP 200", async () => {
     const { email, password } = Object.create(mocks.validUser);
 
-    const res = await request(api.lib)
+    const res = await request(router.httpAdapter.lib)
       .post("/login")
       .send({ email, password })
       .expect(200);
