@@ -1,0 +1,19 @@
+{
+  "name": "meuexpresso-app",
+  "version": "1.0.0",
+  "description": "A app from an e-commerce project for coffee sales ☕🛒",
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "latest",
+    "nuxt": "^3.7.4"
+  },
+  "author": "Christopher Gonçalves <chrissgon.dev@gmail.com>",
+  "license": "ISC"
+}
