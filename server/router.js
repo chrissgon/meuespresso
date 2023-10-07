@@ -15,17 +15,21 @@ import LoginUseCase from "./src/usecases/loginUseCase.js";
 import AddToCartUseCase from "./src/usecases/addToCartUseCase.js";
 import RemoveFromCartUseCase from "./src/usecases/removeFromCartUseCase.js";
 import BuyUseCase from "./src/usecases/buyUseCase.js";
+import GetProductsUseCase from "./src/usecases/getProductsUseCase.js";
 
 import LoginController from "./src/interfaces/controllers/loginController.js";
 import AddToCartController from "./src/interfaces/controllers/addToCartController.js";
 import RemoveFromCartController from "./src/interfaces/controllers/removeFromCartController.js";
 import BuyController from "./src/interfaces/controllers/buyController.js";
+import GetProductsController from "./src/interfaces/controllers/getProductsController.js";
 
 export default class Router {
   constructor() {
     // repos
-    this.userRepo = new MongoDBUserRepo({ mongodb });
-    this.productRepo = new MongoDBProductRepo({ mongodb });
+    // this.userRepo = new MongoDBUserRepo({ mongodb });
+    // this.productRepo = new MongoDBProductRepo({ mongodb });
+    this.userRepo = new InMemoryUserRepo();
+    this.productRepo = new InMemoryProductRepo();
 
     // adapters
     this.httpAdapter = new ExpressAdapter({ express });
@@ -44,6 +48,9 @@ export default class Router {
       userRepo: this.userRepo,
       paymentAdapter: this.paymentAdapter,
     });
+    this.getProductsUseCase = new GetProductsUseCase({
+      productRepo: this.productRepo,
+    });
 
     // controllers
     this.loginController = new LoginController({
@@ -57,6 +64,9 @@ export default class Router {
     });
     this.buyController = new BuyController({
       buyUseCase: this.buyUseCase,
+    });
+    this.getProductsController = new GetProductsController({
+      getProductsUseCase: this.getProductsUseCase,
     });
 
     // routes
@@ -75,6 +85,10 @@ export default class Router {
     this.httpAdapter.post(
       "/buy",
       this.buyController.handle.bind(this.buyController)
+    );
+    this.httpAdapter.get(
+      "/products",
+      this.getProductsController.handle.bind(this.getProductsController)
     );
   }
 }

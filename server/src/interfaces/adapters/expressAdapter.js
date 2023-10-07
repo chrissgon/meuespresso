@@ -9,6 +9,10 @@ export default class ExpressAdapter {
     this.lib.post(url, callback);
   }
 
+  get(url, callback) {
+    this.lib.get(url, callback);
+  }
+
   listen(port) {
     this.lib.listen(port, () => {
       console.log(`App listening on port ${port}`);

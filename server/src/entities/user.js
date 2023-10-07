@@ -10,7 +10,9 @@ export default class User {
     addressNumber,
     addressComplement,
     email,
-    password
+    password,
+    cart,
+    orders
   ) {
     this.userID = userID;
     this.name = name;
@@ -19,5 +21,7 @@ export default class User {
     this.addressComplement = addressComplement;
     this.email = email;
     this.password = password;
+    this.cart = cart;
+    this.orders = orders;
   }
 }
