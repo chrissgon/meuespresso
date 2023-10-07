@@ -1,6 +1,6 @@
 <template>
   <article
-    v-if="userStore.user"
+    
     class="h-fit flex flex-col w-full max-w-[400px] text-center justify-center items-center rounded-lg md:border dark:border-gray-800 md:px-10 py-6"
   >
     <h4 class="lora text-xl font-bold">
@@ -28,17 +28,17 @@
       />
     </figure>
 
+    <!-- info -->
     <h1 class="text-lg font-bold">
-      {{ userStore.user?.name }}
+      {{ user?.name }}
     </h1>
     <p class="text-sm text-gray-500">
-      {{ userStore.user?.email }}
+      {{ user?.email }}
     </p>
 
     <!-- form -->
-
     <UForm
-      :state="userStore.user"
+      :state="state"
       :validate="validate"
       class="mt-10 flex flex-col w-full gap-3"
       @submit="submit"
@@ -50,10 +50,11 @@
         required
       >
         <UInput
-          v-model="userStore.user.address"
+          v-model="state.address"
           size="lg"
         />
       </UFormGroup>
+      
       <!-- address number -->
       <UFormGroup
         label="Número"
@@ -61,20 +62,22 @@
         required
       >
         <UInput
-          v-model="userStore.user.addressNumber"
+          v-model="state.addressNumber"
           size="lg"
         />
       </UFormGroup>
+
       <!-- address complement -->
       <UFormGroup
         label="Complemento"
         name="addressComplement"
       >
         <UInput
-          v-model="userStore.user.addressComplement"
+          v-model="state.addressComplement"
           size="lg"
         />
       </UFormGroup>
+
       <!-- password -->
       <UFormGroup
         label="Senha"
@@ -82,11 +85,12 @@
         required
       >
         <UInput
-          v-model="userStore.user.password"
+          v-model="state.password"
           type="password"
           size="lg"
         />
       </UFormGroup>
+
       <!-- check password -->
       <UFormGroup
         label="Confirmar Senha"
@@ -100,6 +104,7 @@
         />
       </UFormGroup>
 
+      <!-- update -->
       <UButton
         type="submit"
         class="mt-2"
@@ -109,13 +114,15 @@
         Salvar Dados
       </UButton>
     </UForm>
+
+    <!-- logout -->
     <UButton
       size="lg"
       variant="outline"
       color="red"
       class="mt-5"
       block
-      @click="userStore.logout"
+      @click="$emit('logout')"
     >
       Sair da Conta
     </UButton>
@@ -124,6 +131,13 @@
 
 <script setup lang="ts">
 import type { FormError, FormSubmitEvent } from "@nuxt/ui/dist/runtime/types";
+import { IUser } from "~/types";
+
+// props
+interface IProps{
+  user: IUser
+}
+const props = defineProps<IProps>()
 
 // computed
 const isDark = computed({
@@ -136,24 +150,24 @@ const isDark = computed({
 });
 
 // data
-const userStore = useUserStore();
 const colorMode = useColorMode();
 const checkPassword = ref<string>("");
+const state = ref<IUser>(props.user)
 
 // methods
 function validate(): FormError[] {
   const errors = [];
 
-  if (!userStore.user?.address) {
+  if (!props.user.address) {
     errors.push({ path: "address", message: "Campo inválido" });
   }
-  if (isNaN(Number(userStore.user?.addressNumber))) {
+  if (isNaN(Number(props.user.addressNumber))) {
     errors.push({ path: "addressNumber", message: "Campo inválido" });
   }
-  if (!userStore.user?.password) {
+  if (!props.user.password) {
     errors.push({ path: "password", message: "Campo inválido" });
   }
-  if (userStore.user?.password !== checkPassword.value) {
+  if (props.user.password !== checkPassword.value) {
     errors.push({ path: "checkPassword", message: "A senha não confere" });
   }
 
@@ -163,6 +177,9 @@ function validate(): FormError[] {
 async function submit(event: FormSubmitEvent<any>) {
   console.log("submit", event.data);
 }
+
+// emits
+defineEmits(["logout"])
 </script>
 
 <style scoped></style>

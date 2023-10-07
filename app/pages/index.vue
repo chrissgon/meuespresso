@@ -12,14 +12,15 @@
           Oferecemos uma experiência única para os amantes de café. Explore,
           escolha e aproveite os itens do Meu Expresso.
         </p>
-        <UButton
-          class="w-fit text-base px-6"
-          size="lg"
-        >
-          Explorar
-        </UButton>
+        <a href="#collection">
+          <UButton
+            class="w-fit text-base px-6"
+            size="lg"
+          > Explorar </UButton>
+        </a>
       </main>
 
+      <!-- slider -->
       <MoleculeProductSliderView
         :error="getError({ operation: EOperations.ProductsGet })"
         :loading="getOperation({ operation: EOperations.ProductsGet })"
@@ -27,7 +28,12 @@
       />
     </div>
 
-    <article class="w-full flex flex-col gap-5 mt-10 md:px-5">
+    <!-- collection -->
+    <article
+      id="collection"
+      class="w-full flex flex-col gap-5 pt-10 md:px-5"
+    >
+      <!-- header -->
       <header class="flex max-sm:flex-col justify-between gap-4">
         <h2 class="lora text-2xl font-bold">
           Nossa Coleção
@@ -44,25 +50,26 @@
         />
       </header>
 
+      <!-- error alert -->
       <UAlert
         v-if="getError({ operation: EOperations.ProductsGet })"
-        icon="i-heroicons-x-circle"
+        icon="i-heroicons-exclamation-triangle"
         color="amber"
         variant="soft"
         :title="getError({ operation: EOperations.ProductsGet })"
       />
-
+      
+      <!-- products -->
       <MoleculeProductCardView
         :loading="
           getOperation({ operation: EOperations.ProductsGet }) ||
             getOperation({ operation: EOperations.ProductsFind })
         "
+        :loading-item="getOperation({ operation: EOperations.UserAddToCart })"
         :products="productStore.productsFiltered"
         @addToCart="userStore.addToCart"
       />
     </article>
-
-    <UNotifications color="red" />
   </section>
 </template>
 
@@ -76,10 +83,14 @@ const productStore = useProductStore();
 const search = ref<string>("");
 const toast = useToast();
 
+// watch
 watch(
-  () => getError({ operation: EOperations.UserAddToCart }),
-  (value: string) => {
-    if (!value) {
+  () => getOperation({ operation: EOperations.UserAddToCart }),
+  (unfinished: boolean) => {
+    if (unfinished) return;
+    const error = getError({ operation: EOperations.UserAddToCart });
+
+    if (!error) {
       toast.add({
         title: "Produto adicionado com sucesso!",
         icon: "i-heroicons-check-circle",
@@ -90,7 +101,7 @@ watch(
     }
 
     toast.add({
-      title: value,
+      title: error,
       icon: "i-heroicons-exclamation-triangle",
       description: "Não é possível adicionar o mesmo produto duas vezes",
       color: "red",

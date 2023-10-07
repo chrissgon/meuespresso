@@ -1,6 +1,5 @@
 <template>
   <form
-    v-if="!userStore.isLogged"
     class="h-fit flex flex-col w-full max-w-[400px] justify-center items-center rounded-lg gap-4 md:border dark:border-gray-800 md:px-10 md:py-24 py-14"
   >
     <!-- draw -->
@@ -20,12 +19,13 @@
       </p>
     </header>
 
+    <!-- error alert -->
     <UAlert
-      v-if="getError({ operation: EOperations.UserLogin })"
+      v-if="error"
       icon="i-heroicons-x-circle"
       color="red"
       variant="outline"
-      :title="getError({ operation: EOperations.UserLogin })"
+      :title="error"
     />
 
     <!-- form -->
@@ -33,7 +33,7 @@
       :state="state"
       :validate="validate"
       class="w-full flex flex-col gap-4"
-      @submit="userStore.login(state)"
+      @submit="$emit('login', state)"
     >
       <!-- email -->
       <UFormGroup
@@ -48,6 +48,7 @@
           size="lg"
         />
       </UFormGroup>
+      
       <!-- password -->
       <UFormGroup
         label="Senha"
@@ -62,12 +63,14 @@
         />
       </UFormGroup>
 
+      <!-- submit -->
       <UButton
-        :loading="getOperation({ operation: EOperations.UserLogin })"
+        :loading="loading"
         class="mt-5"
         size="lg"
         type="submit"
         block
+        trailing
       >
         Entrar
       </UButton>
@@ -76,13 +79,16 @@
 </template>
 
 <script setup lang="ts">
-import { EOperations } from "~/types";
 import type { FormError } from "@nuxt/ui/dist/runtime/types";
 
-// data
-const { getOperation, getError, removeError } = useAppStore();
-const userStore = useUserStore();
+// props
+interface IProps {
+  loading?: boolean;
+  error?: string;
+}
+defineProps<IProps>();
 
+// data
 const state = ref({
   email: "christopher@gmail.com",
   password: "123456",
@@ -100,11 +106,14 @@ function validate(): FormError[] {
   }
 
   if (errors.length > 0) {
-    removeError({ operation: EOperations.UserLogin });
+    emit("removeError");
   }
 
   return errors;
 }
+
+// emits
+const emit = defineEmits(["login", "removeError"]);
 </script>
 
 <style scoped></style>

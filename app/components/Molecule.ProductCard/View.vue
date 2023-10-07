@@ -21,6 +21,7 @@
         v-for="(product, i) in products"
         :key="i"
         :product="product"
+        :loading="loadingItem"
         @addToCart="(product) => $emit('addToCart', product)"
       />
     </article>
@@ -34,6 +35,7 @@ import { IProducts } from "~/types";
 interface IProps {
   products: IProducts | null;
   loading?: boolean;
+  loadingItem?: boolean;
 }
 defineProps<IProps>();
 

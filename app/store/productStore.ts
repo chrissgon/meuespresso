@@ -19,8 +19,6 @@ export const useProductStore = defineStore(
 
       const { data, error } = await get<IProducts>("/products");
 
-      // await new Promise((resolve) => setTimeout(resolve, 5000));
-
       stopOperation({ operation });
 
       if (error.value) {
@@ -43,8 +41,6 @@ export const useProductStore = defineStore(
       const { data, error } = await get<IProducts>("/products", {
         params: filters,
       });
-
-      // await new Promise((resolve) => setTimeout(resolve, 5000));
 
       stopOperation({ operation });
 

@@ -52,6 +52,8 @@
       class="max-sm:mt-5"
       size="lg"
       block
+      :loading="loading"
+      trailing
       @click="addToCart"
     >
       Adicionar ao Carrinho
@@ -65,6 +67,7 @@ import { IProduct } from "~/types";
 // props
 interface IProps {
   product: IProduct;
+  loading?: boolean
 }
 const props = defineProps<IProps>();
 

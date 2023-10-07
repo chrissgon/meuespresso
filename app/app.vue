@@ -1,9 +1,14 @@
 <template>
   <div>
     <VitePwaManifest />
+    <!-- header main -->
     <OrganismHeaderMain class="pt-6 sm:pt-8 sm:px-16 px-10" />
+    <!-- pages -->
     <NuxtPage class="page-height px-5 sm:px-10 mt-5 sm:mt-10" />
-    <OrganismFooterMain class="px-5 sm:px-10 py-5 mt-10 max-md:mb-[73px]" />
+    <!-- footer main -->
+    <OrganismFooterMain class="px-5 sm:px-10 py-5 mt-10" />
+    <!-- notifications -->
+    <UNotifications />
   </div>
 </template>
 
@@ -19,6 +24,7 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
   font-family: "Nunito Sans", sans-serif;
+  scroll-behavior: smooth;
 }
 
 .lora {
