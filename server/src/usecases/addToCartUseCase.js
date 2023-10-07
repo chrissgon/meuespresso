@@ -14,7 +14,7 @@ export default class AddToCartUseCase {
 
     if (exists) return false;
 
-    const product = await this.productRepo.getByID({ productID });
+    const product = Object.create(await this.productRepo.getByID({ productID }));
 
     if (!product) {
       return false;
