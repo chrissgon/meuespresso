@@ -12,10 +12,16 @@
           Oferecemos uma experiência única para os amantes de café. Explore,
           escolha e aproveite os itens do Meu Expresso.
         </p>
-        <UButton class="w-fit text-base px-6" size="lg"> Explorar </UButton>
+        <UButton
+          class="w-fit text-base px-6"
+          size="lg"
+        >
+          Explorar
+        </UButton>
       </main>
 
       <MoleculeProductSliderView
+        :error="getError({ operation: EOperations.ProductsGet })"
         :loading="getOperation({ operation: EOperations.ProductsGet })"
         :products="productStore.products"
       />
@@ -23,35 +29,40 @@
 
     <article class="w-full flex flex-col gap-5 mt-10 md:px-5">
       <header class="flex max-sm:flex-col justify-between gap-4">
-        <h2 class="lora text-2xl font-bold">Nossa Coleção</h2>
+        <h2 class="lora text-2xl font-bold">
+          Nossa Coleção
+        </h2>
         <UInput
           v-model="search"
+          type="search"
+          size="lg"
           :loading="getOperation({ operation: EOperations.ProductsFind })"
           placeholder="Pesquise"
           icon="i-heroicons-magnifying-glass-20-solid"
-          @blur="productStore.findProducts({ name: search })"
+          trailing
+          @change="productStore.findProducts({ name: search })"
         />
-        <!-- 
-       -->
       </header>
 
       <UAlert
         v-if="getError({ operation: EOperations.ProductsGet })"
         icon="i-heroicons-x-circle"
-        color="red"
-        variant="outline"
+        color="amber"
+        variant="soft"
         :title="getError({ operation: EOperations.ProductsGet })"
       />
 
       <MoleculeProductCardView
-        v-else
         :loading="
           getOperation({ operation: EOperations.ProductsGet }) ||
-          getOperation({ operation: EOperations.ProductsFind })
+            getOperation({ operation: EOperations.ProductsFind })
         "
         :products="productStore.productsFiltered"
+        @addToCart="userStore.addToCart"
       />
     </article>
+
+    <UNotifications color="red" />
   </section>
 </template>
 
@@ -60,10 +71,32 @@ import { EOperations } from "~/types";
 
 // data
 const { getOperation, getError } = useAppStore();
+const userStore = useUserStore();
 const productStore = useProductStore();
 const search = ref<string>("");
+const toast = useToast();
 
-productStore.getProducts();
+watch(
+  () => getError({ operation: EOperations.UserAddToCart }),
+  (value: string) => {
+    if (!value) {
+      toast.add({
+        title: "Produto adicionado com sucesso!",
+        icon: "i-heroicons-check-circle",
+        description: "Acesse seu carrinho clicando no icone no topo da página",
+        color: "green",
+      });
+      return;
+    }
+
+    toast.add({
+      title: value,
+      icon: "i-heroicons-exclamation-triangle",
+      description: "Não é possível adicionar o mesmo produto duas vezes",
+      color: "red",
+    });
+  }
+);
 </script>
 
 <style scoped>

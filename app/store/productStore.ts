@@ -19,7 +19,7 @@ export const useProductStore = defineStore(
 
       const { data, error } = await get<IProducts>("/products");
 
-      await new Promise((resolve) => setTimeout(resolve, 5000));
+      // await new Promise((resolve) => setTimeout(resolve, 5000));
 
       stopOperation({ operation });
 
@@ -33,6 +33,7 @@ export const useProductStore = defineStore(
       products.value = data.value;
       productsFiltered.value = data.value;
     }
+
     async function findProducts(filters: any): Promise<void> {
       const operation = EOperations.ProductsFind;
       const err = EErrors.ProductsFind;
@@ -43,7 +44,7 @@ export const useProductStore = defineStore(
         params: filters,
       });
 
-      await new Promise((resolve) => setTimeout(resolve, 5000));
+      // await new Promise((resolve) => setTimeout(resolve, 5000));
 
       stopOperation({ operation });
 

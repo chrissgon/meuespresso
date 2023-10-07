@@ -11,16 +11,6 @@ export const useAppStore = defineStore(
         icon: "bi-house",
       },
       {
-        path: "/collection",
-        label: "Coleção",
-        icon: "bi-collection",
-      },
-      {
-        path: "/shop",
-        label: "Compras",
-        icon: "bi-bag",
-      },
-      {
         path: "/account",
         label: "Conta",
         icon: "bi-person",

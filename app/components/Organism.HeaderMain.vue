@@ -1,14 +1,16 @@
 <template>
   <header class="w-full flex justify-between items-center">
     <!-- logo -->
-    <img
-      src="/logo.svg"
-      alt="Meu Expresso Logo"
-      class="w-8 sm:w-10"
-    >
+    <NuxtLink to="/">
+      <img
+        src="/logo.svg"
+        alt="Meu Expresso Logo"
+        class="w-8 sm:w-10"
+      >
+    </NuxtLink>
 
     <!-- nav -->
-    <nav class="flex gap-12 max-md:hidden">
+    <nav class="flex gap-6">
       <NuxtLink
         v-for="{ path, label, icon } in appStore.nav"
         :key="path"
@@ -23,10 +25,10 @@
     </nav>
 
     <!-- cart -->
-    <aside
+    <NuxtLink
+      to="/cart"
       class="w-10 h-10 flex justify-center items-center relative cursor-pointer rounded-full"
       :class="{ 'bg-gray-100 dark:bg-gray-800': cartIsActive }"
-      @click="$router.push('/cart')"
     >
       <div
         v-if="userStore.getCartSize"
@@ -35,7 +37,7 @@
         {{ userStore.getCartSize }}
       </div>
       <i class="bi-cart2 text-xl" />
-    </aside>
+    </NuxtLink>
   </header>
 </template>
 

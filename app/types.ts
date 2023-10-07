@@ -60,9 +60,11 @@ export enum EOperations {
   UserLogin = "user:login",
   ProductsGet = "products:get",
   ProductsFind = "products:find",
+  UserAddToCart = "user:addToCart",
 }
 export enum EErrors {
   UserLogin = "Email ou senha inválidos",
   ProductsGet = "Erro ao carregar os produtos",
   ProductsFind = "Erro ao procurar os produtos",
+  UserAddToCart = "Não foi possível adicionar o item ao carrinho",
 }

@@ -1,4 +1,4 @@
-import { EErrors, EOperations, IUser } from "~/types";
+import { EErrors, EOperations, IProduct, IUser } from "~/types";
 
 export const useUserStore = defineStore(
   "userStore",
@@ -30,20 +30,53 @@ export const useUserStore = defineStore(
       removeError({ operation });
       user.value = data.value;
     }
+
     async function logout(): Promise<void> {
-      user.value = null
+      user.value = null;
+    }
+
+    async function addToCart(product: IProduct): Promise<void> {
+      if(!isLogged.value) {
+        useRouter().push("/account")
+        return
+      }
+
+      const operation = EOperations.UserAddToCart;
+      const err = EErrors.UserAddToCart;
+
+      startOperation({ operation });
+
+      const body = {
+        userID: user.value?.userID,
+        productID: product.productID,
+        quantity: product.quantity,
+      };
+
+      const {  error } = await post<string>("/addToCart", { body });
+
+      stopOperation({ operation });
+
+      if (error.value) {
+        setError({ operation, err });
+        return;
+      }
+
+      removeError({ operation });
+
+      login(user.value)
     }
 
     // getters
     const isLogged = computed<boolean>(() => user.value !== null);
-    const getCartSize = computed<number>(() =>  user.value?.cart.length ?? 0)
+    const getCartSize = computed<number>(() => user.value?.cart.length ?? 0);
 
     return {
       user,
       login,
       logout,
+      addToCart,
       isLogged,
-      getCartSize
+      getCartSize,
     };
   },
   { persist: true }
