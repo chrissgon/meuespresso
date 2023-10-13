@@ -2,9 +2,9 @@
   <div>
     <VitePwaManifest />
     <!-- header main -->
-    <OrganismHeaderMain class="pt-6 sm:pt-8 sm:px-16 px-10" />
+    <OrganismHeaderMain class="fixed top-0 py-3 sm:px-16 px-10" />
     <!-- pages -->
-    <NuxtPage class="page-height px-5 sm:px-10 mt-5 sm:mt-10" />
+    <NuxtPage class="page-height px-5 sm:px-10 mt-20" />
     <!-- footer main -->
     <OrganismFooterMain class="px-5 sm:px-10 py-5 mt-10" />
     <!-- notifications -->
@@ -13,8 +13,37 @@
 </template>
 
 <script setup lang="ts">
+import pkg from "./package.json";
+
 const productStore = useProductStore();
 productStore.getProducts();
+
+if (process.client) {
+  useSeoMeta({
+    description: pkg.description,
+    ogTitle: pkg.displayName,
+    ogDescription: pkg.description,
+    ogImage: "/thumb.png",
+    ogUrl: location.origin,
+    twitterTitle: pkg.displayName,
+    twitterDescription: pkg.description,
+    twitterImage: "/thumb.png",
+    twitterCard: "summary_large_image",
+  });
+}
+
+useHead({
+  htmlAttrs: {
+    lang: "pt-br",
+  },
+  link: [
+    {
+      rel: "icon",
+      type: "image/x-icon",
+      href: "/favicon.ico",
+    },
+  ],
+});
 </script>
 
 <style>
@@ -37,6 +66,6 @@ body {
 }
 
 .page-height {
-  min-height: calc(100vh - 240px);
+  min-height: calc(100vh - 208px);
 }
 </style>

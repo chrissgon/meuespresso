@@ -26,6 +26,7 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
+    "crypto-js": "^4.1.1",
     "pinia-plugin-persistedstate": "^3.2.0"
   }
 }

@@ -11,11 +11,6 @@ export default defineNuxtConfig({
 
       link: [
         {
-          rel: "icon",
-          type: "image/x-icon",
-          href: "/favicon.ico",
-        },
-        {
           rel: "stylesheet",
           href: "https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Nunito+Sans:wght@400;700&display=swap",
         },

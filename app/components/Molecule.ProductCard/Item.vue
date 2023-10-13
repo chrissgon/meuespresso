@@ -95,6 +95,7 @@ function delQuantity(): void {
 }
 function addToCart(): void {
   emit("addToCart", { ...props.product, quantity: quantity.value });
+  quantity.value = 1
 }
 
 // emits

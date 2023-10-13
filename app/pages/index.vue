@@ -58,7 +58,7 @@
         variant="soft"
         :title="getError({ operation: EOperations.ProductsGet })"
       />
-      
+
       <!-- products -->
       <MoleculeProductCardView
         :loading="
@@ -67,7 +67,7 @@
         "
         :loading-item="getOperation({ operation: EOperations.UserAddToCart })"
         :products="productStore.productsFiltered"
-        @addToCart="userStore.addToCart"
+        @add-to-cart="userStore.addToCart"
       />
     </article>
   </section>
@@ -96,6 +96,9 @@ watch(
         icon: "i-heroicons-check-circle",
         description: "Acesse seu carrinho clicando no icone no topo da página",
         color: "green",
+        actions: [
+          { label: "Ver carrinho", click: () => useRouter().push("/cart") },
+        ],
       });
       return;
     }

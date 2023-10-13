@@ -32,7 +32,7 @@
     <h1 class="text-lg font-bold">
       {{ user?.name }}
     </h1>
-    <p class="text-sm text-gray-500">
+    <p class="text-sm opacity-50">
       {{ user?.email }}
     </p>
 
@@ -40,7 +40,7 @@
     <UForm
       :state="state"
       :validate="validate"
-      class="mt-10 flex flex-col w-full gap-3"
+      class="mt-10 flex flex-col w-full gap-3 text-left"
       @submit="submit"
     >
       <!-- address -->
@@ -98,7 +98,7 @@
         required
       >
         <UInput
-          v-model="checkPassword"
+          v-model="state.checkPassword"
           type="password"
           size="lg"
         />
@@ -109,6 +109,9 @@
         type="submit"
         class="mt-2"
         size="lg"
+        :disabled="disabledUpdate"
+        :loading="loading"
+        trailing
         block
       >
         Salvar Dados
@@ -136,6 +139,7 @@ import { IUser } from "~/types";
 // props
 interface IProps{
   user: IUser
+  loading: boolean
 }
 const props = defineProps<IProps>()
 
@@ -151,35 +155,47 @@ const isDark = computed({
 
 // data
 const colorMode = useColorMode();
-const checkPassword = ref<string>("");
-const state = ref<IUser>(props.user)
+const disabledUpdate = ref<boolean>(true)
+// const checkPassword = ref<string>("");
+const state = ref<any>({
+  address: props.user.address,
+  addressNumber: props.user.addressNumber,
+  addressComplement: props.user.addressComplement,
+  password: "",
+  checkPassword: ""
+})
 
 // methods
-function validate(): FormError[] {
+function validate(state:any): FormError[] {
   const errors = [];
 
-  if (!props.user.address) {
+  if (!state.address) {
     errors.push({ path: "address", message: "Campo inválido" });
   }
-  if (isNaN(Number(props.user.addressNumber))) {
+  if (!state.addressNumber) {
     errors.push({ path: "addressNumber", message: "Campo inválido" });
   }
-  if (!props.user.password) {
+  if (isNaN(Number(state.addressNumber))) {
+    errors.push({ path: "addressNumber", message: "Campo inválido" });
+  }
+  if (!state.password) {
     errors.push({ path: "password", message: "Campo inválido" });
   }
-  if (props.user.password !== checkPassword.value) {
+  if (state.password !== state.checkPassword) {
     errors.push({ path: "checkPassword", message: "A senha não confere" });
   }
+
+  disabledUpdate.value = !!errors.length
 
   return errors;
 }
 
 async function submit(event: FormSubmitEvent<any>) {
-  console.log("submit", event.data);
+  emit("update", event.data)
 }
 
 // emits
-defineEmits(["logout"])
+const emit = defineEmits(["logout", "update"])
 </script>
 
 <style scoped></style>

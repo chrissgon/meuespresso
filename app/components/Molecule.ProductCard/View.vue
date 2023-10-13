@@ -22,7 +22,7 @@
         :key="i"
         :product="product"
         :loading="loadingItem"
-        @addToCart="(product) => $emit('addToCart', product)"
+        @add-to-cart="(product) => $emit('addToCart', product)"
       />
     </article>
   </section>

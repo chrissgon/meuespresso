@@ -1,11 +1,14 @@
 <template>
-  <header class="w-full flex justify-between items-center">
+  <header
+    class="header w-full flex justify-between items-center z-10"
+    :class="{ 'border-b dark:border-b-gray-800': !atTop }"
+  >
     <!-- logo -->
     <NuxtLink to="/">
       <img
         src="/logo.svg"
         alt="Meu Expresso Logo"
-        class="w-8 sm:w-10"
+        class="w-8"
       >
     </NuxtLink>
 
@@ -32,11 +35,11 @@
     >
       <div
         v-if="userStore.getCartSize"
-        class="notification bg-default-600 font-bold text-sm"
+        class="notification bg-default-600 font-bold text-xs"
       >
         {{ userStore.getCartSize }}
       </div>
-      <i class="bi-cart2 text-xl" />
+      <i class="bi-cart2 text-lg" />
     </NuxtLink>
   </header>
 </template>
@@ -55,12 +58,29 @@ const isActive = computed<Function>(() => ({ path }: ITab) => {
 const cartIsActive = computed<boolean>(() => {
   return useRoute().path === "/cart";
 });
+
+// data
+const atTop = ref<boolean>(true);
+
+// methods
+if (process.client) {
+  window.addEventListener("scroll", () => {
+    atTop.value = window.scrollY < 1;
+  });
+}
 </script>
 
 <style scoped>
+.header {
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(5px);
+}
+.dark .header {
+  background: rgba(3, 7, 18, 0.7);
+}
 .notification {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   border-radius: 100%;
   display: flex;
   justify-content: center;
@@ -68,6 +88,6 @@ const cartIsActive = computed<boolean>(() => {
   color: white;
   position: absolute;
   z-index: 2;
-  transform: translate(14px, -14px);
+  transform: translate(10px, -10px);
 }
 </style>
