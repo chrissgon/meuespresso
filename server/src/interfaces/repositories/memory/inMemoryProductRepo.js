@@ -19,7 +19,7 @@ export default class InMemoryProductRepo extends InMemoryBaseRepo {
   getByFilters({ name }) {
     if (!this.products) return;
     return this.products.filter((product) => {
-      return product.name.match(new RegExp(name, "i")) !== null
+      return product.name.toUpperCase().includes(name);
     });
   }
 }

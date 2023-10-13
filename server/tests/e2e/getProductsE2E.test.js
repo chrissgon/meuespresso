@@ -15,7 +15,7 @@ describe("GET /products", () => {
   it("should request GET /products route and return HTTP 404", async () => {
     const res = await request(router.httpAdapter.lib)
       .get("/products")
-      .send({ name: "test" })
+      .query({ name: "test" })
       .expect(404);
 
     expect(res.text).to.equal("not found");
@@ -27,7 +27,7 @@ describe("GET /products", () => {
 
     const res = await request(router.httpAdapter.lib)
       .get("/products")
-      .send({ name })
+      .query({ name })
       .expect(200);
 
     expect(JSON.parse(res.text)).to.be.deep.equal([product]);

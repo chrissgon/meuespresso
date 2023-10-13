@@ -16,12 +16,14 @@ import AddToCartUseCase from "./src/usecases/addToCartUseCase.js";
 import RemoveFromCartUseCase from "./src/usecases/removeFromCartUseCase.js";
 import BuyUseCase from "./src/usecases/buyUseCase.js";
 import GetProductsUseCase from "./src/usecases/getProductsUseCase.js";
+import UpdateUserUseCase from "./src/usecases/updateUserUseCase.js";
 
 import LoginController from "./src/interfaces/controllers/loginController.js";
 import AddToCartController from "./src/interfaces/controllers/addToCartController.js";
 import RemoveFromCartController from "./src/interfaces/controllers/removeFromCartController.js";
 import BuyController from "./src/interfaces/controllers/buyController.js";
 import GetProductsController from "./src/interfaces/controllers/getProductsController.js";
+import UpdateUserController from "./src/interfaces/controllers/updateUserController.js";
 
 export default class Router {
   constructor() {
@@ -51,6 +53,9 @@ export default class Router {
     this.getProductsUseCase = new GetProductsUseCase({
       productRepo: this.productRepo,
     });
+    this.updateUserUseCase = new UpdateUserUseCase({
+      userRepo: this.userRepo,
+    });
 
     // controllers
     this.loginController = new LoginController({
@@ -67,6 +72,9 @@ export default class Router {
     });
     this.getProductsController = new GetProductsController({
       getProductsUseCase: this.getProductsUseCase,
+    });
+    this.updateUserController = new UpdateUserController({
+      updateUserUseCase: this.updateUserUseCase,
     });
 
     // routes
@@ -90,9 +98,9 @@ export default class Router {
       "/products",
       this.getProductsController.handle.bind(this.getProductsController)
     );
+    this.httpAdapter.post(
+      "/updateUser",
+      this.updateUserController.handle.bind(this.updateUserController)
+    );
   }
 }
-
-// const userRepo = new MongoDBUserRepo({ mongodb });
-
-// export default this.httpAdapter;

@@ -14,12 +14,13 @@ export default class AddToCartUseCase {
 
     if (exists) return false;
 
-    const product = Object.create(await this.productRepo.getByID({ productID }));
+    const entireProduct = await this.productRepo.getByID({ productID });
 
-    if (!product) {
+    if (!entireProduct) {
       return false;
     }
 
+    const product = { ...entireProduct };
     delete product.description;
     product.quantity = quantity;
 

@@ -24,6 +24,24 @@ export default class InMemoryUserRepo extends InMemoryBaseRepo {
     return this.users.find((user) => user.userID === userID);
   }
 
+  updateByID({ userID, address, addressNumber, addressComplement, password }) {
+    if (!this.users) return;
+
+    const index = this.users.findIndex((user) => user.userID === userID);
+
+    if (index === -1) return;
+
+    this.users[index] = {
+      ...this.users[index],
+      address,
+      addressNumber,
+      addressComplement,
+      password,
+    };
+
+    return this.users[index];
+  }
+
   getProductInCartByProductID({ userID, productID }) {
     if (!this.users) return;
 
@@ -71,7 +89,7 @@ export default class InMemoryUserRepo extends InMemoryBaseRepo {
 
     if (index === -1) return;
 
-    this.users[index].length = 0;
+    this.users[index].cart.length = 0;
 
     return true;
   }
