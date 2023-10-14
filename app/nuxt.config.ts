@@ -26,7 +26,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      SERVER_URL: "http://localhost:3333",
+      SERVER_URL: process.env.SERVER_URL,
     },
   },
 
