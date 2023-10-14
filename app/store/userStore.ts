@@ -36,6 +36,8 @@ export const useUserStore = defineStore(
     }
 
     async function getUser(): Promise<void> {
+      if(!user.value) return
+
       const operation = EOperations.UserGet;
       const err = EErrors.UserGet;
 
@@ -182,6 +184,7 @@ export const useUserStore = defineStore(
     return {
       user,
       login,
+      getUser,
       logout,
       addToCart,
       removeFromCart,

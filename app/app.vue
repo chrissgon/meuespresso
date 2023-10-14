@@ -15,8 +15,8 @@
 <script setup lang="ts">
 import pkg from "./package.json";
 
-const productStore = useProductStore();
-productStore.getProducts();
+useProductStore().getProducts();
+useUserStore().getUser();
 
 if (process.client) {
   useSeoMeta({
