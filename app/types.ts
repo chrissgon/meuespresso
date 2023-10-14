@@ -64,6 +64,7 @@ export enum EOperations {
   UserRemoveFromCart = "user:addToCart",
   UserBuy = "user:buy",
   UserUpdate = "user:update",
+  UserGet = "user:get",
 }
 export enum EErrors {
   UserLogin = "Email ou senha inválidos",
@@ -73,4 +74,5 @@ export enum EErrors {
   UserRemoveFromCart = "Erro ao remover o item do carrinho",
   UserBuy = "Erro ao realizar a compra",
   UserUpdate = "Erro ao atualizar o usuário",
+  UserGet = "Erro ao atualizar o usuário",
 }

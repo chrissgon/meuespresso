@@ -3,9 +3,6 @@
     v-if="userStore.user?.cart.length"
     class="flex flex-col items-center"
   >
-
-  {{ userStore.user.password }}
-
     <div class="flex flex-col gap-6 w-full max-w-4xl">
       <!-- products -->
       <OrganismProductCartView

@@ -35,6 +35,27 @@ export const useUserStore = defineStore(
       user.value = null;
     }
 
+    async function getUser(): Promise<void> {
+      const operation = EOperations.UserGet;
+      const err = EErrors.UserGet;
+
+      startOperation({ operation });
+
+      const body = { userID: user.value?.userID };
+
+      const { data, error } = await post<IUser>("/getUser", { body });
+
+      stopOperation({ operation });
+
+      if (error.value) {
+        setError({ operation, err });
+        return;
+      }
+
+      removeError({ operation });
+      user.value = data.value
+    }
+
     async function addToCart(product: IProduct): Promise<void> {
       if (!isLogged.value) {
         useRouter().push("/account");
@@ -62,8 +83,7 @@ export const useUserStore = defineStore(
       }
 
       removeError({ operation });
-
-      login(user.value);
+      getUser();
     }
 
     async function removeFromCart({ productID }: ICartItem): Promise<void> {
@@ -87,8 +107,7 @@ export const useUserStore = defineStore(
       }
 
       removeError({ operation });
-
-      login(user.value);
+      getUser()
     }
     async function buy({
       address,
@@ -121,8 +140,7 @@ export const useUserStore = defineStore(
       }
 
       removeError({ operation });
-
-      login(user.value);
+      getUser()
     }
     async function updateUser({
       address,
@@ -154,7 +172,7 @@ export const useUserStore = defineStore(
 
       removeError({ operation });
 
-      user.value = data.value
+      user.value = data.value;
     }
 
     // getters
