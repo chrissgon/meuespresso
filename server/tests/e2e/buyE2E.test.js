@@ -31,9 +31,9 @@ describe("POST /but", () => {
   });
 
   it("should request POST /buy route and return HTTP 200", async () => {
-    const { userID, address, addressNumber, addressComplement } = Object.create(
-      mocks.validUser
-    );
+    const { userID, address, addressNumber, addressComplement } = {
+      ...mocks.validUser,
+    };
     const products = [
       { ...mocks.validProduct, quantity: 2 },
       { ...mocks.validProductOutsideCart, quantity: 1 },

@@ -24,7 +24,7 @@ describe("GetProductsUseCase Unit Test", () => {
   });
 
   it("Should return true because the filter is working", async () => {
-    const product = Object.create(mocks.validProduct);
+    const product = { ...mocks.validProduct };
     const { name } = product;
 
     const stub = sandbox
@@ -42,7 +42,7 @@ describe("GetProductsUseCase Unit Test", () => {
   });
 
   it("Should return true because return all products", async () => {
-    const product = Object.create(mocks.validProduct);
+    const product = { ...mocks.validProduct };
 
     const stub = sandbox
       .stub(

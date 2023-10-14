@@ -14,14 +14,16 @@ const router = new Router();
 
 describe("POST /addToCart", () => {
   it("should request POST /addToCart route and return HTTP 500", async () => {
-    const res = await request(router.httpAdapter.lib).post("/addToCart").expect(500);
+    const res = await request(router.httpAdapter.lib)
+      .post("/addToCart")
+      .expect(500);
 
     expect(res.text).to.equal("error");
   });
 
   it("should request POST /addToCart route and return HTTP 200", async () => {
-    const { userID } = Object.create(mocks.validUser);
-    const { productID } = Object.create(mocks.validProductOutsideCart);
+    const { userID } = { ...mocks.validUser };
+    const { productID } = { ...mocks.validProductOutsideCart };
 
     const res = await request(router.httpAdapter.lib)
       .post("/addToCart")

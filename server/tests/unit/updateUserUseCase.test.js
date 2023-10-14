@@ -27,14 +27,17 @@ describe("UpdateUserUseCase Unit Test", () => {
   });
 
   it("Should return true because the user was updated", async () => {
-    const user = Object.create(mocks.validUser);
+    const user = { ...mocks.validUser };
 
     sandbox
-      .stub(updateUserUseCase.userRepo, updateUserUseCase.userRepo.updateByID.name)
+      .stub(
+        updateUserUseCase.userRepo,
+        updateUserUseCase.userRepo.updateByID.name
+      )
       .resolves(true);
 
     const have = await updateUserUseCase.execute(user);
 
-    expect(have).to.be.true
+    expect(have).to.be.true;
   });
 });

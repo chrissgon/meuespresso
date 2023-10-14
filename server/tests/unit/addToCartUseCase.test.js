@@ -31,8 +31,8 @@ describe("AddToCartUseCase Unit Test", () => {
   });
 
   it("Should return false because the product exists in the cart", async () => {
-    const { userID } = Object.create(mocks.validUser);
-    const { productID } = Object.create(mocks.validProduct);
+    const { userID } = { ...mocks.validUser };
+    const { productID } = { ...mocks.validProduct };
 
     sandbox
       .stub(
@@ -51,8 +51,8 @@ describe("AddToCartUseCase Unit Test", () => {
   });
 
   it("Should return false because the product was not found", async () => {
-    const { userID } = Object.create(mocks.validUser);
-    const { productID } = Object.create(mocks.validProduct);
+    const { userID } = { ...mocks.validUser };
+    const { productID } = { ...mocks.validProduct };
 
     sandbox
       .stub(
@@ -78,8 +78,8 @@ describe("AddToCartUseCase Unit Test", () => {
   });
 
   it("Should return false because the product was not added", async () => {
-    const { userID } = Object.create(mocks.validUser);
-    const { productID } = Object.create(mocks.validProduct);
+    const { userID } = { ...mocks.validUser };
+    const { productID } = { ...mocks.validProduct };
 
     sandbox
       .stub(
@@ -109,8 +109,8 @@ describe("AddToCartUseCase Unit Test", () => {
   });
 
   it("Should return true because the product has been added", async () => {
-    const { userID } = Object.create(mocks.validUser);
-    const { productID } = Object.create(mocks.validProduct);
+    const { userID } = { ...mocks.validUser };
+    const { productID } = { ...mocks.validProduct };
 
     sandbox
       .stub(

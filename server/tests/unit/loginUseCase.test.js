@@ -25,7 +25,7 @@ describe("LoginUseCase Unit Test", () => {
   });
 
   it("Should return false because the credentials is invalid", async () => {
-    const user = Object.create(mocks.validUser);
+    const user = { ...mocks.validUser };
 
     sandbox
       .stub(loginUseCase.userRepo, loginUseCase.userRepo.login.name)
@@ -37,7 +37,7 @@ describe("LoginUseCase Unit Test", () => {
   });
 
   it("Should return an user because the credentials is valid", async () => {
-    const user = Object.create(mocks.validUser);
+    const user = { ...mocks.validUser };
 
     sandbox
       .stub(loginUseCase.userRepo, loginUseCase.userRepo.login.name)

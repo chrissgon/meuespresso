@@ -22,7 +22,7 @@ describe("GET /products", () => {
   });
 
   it("should request GET /products route and return HTTP 200", async () => {
-    const product = Object.create(mocks.validProduct);
+    const product = { ...mocks.validProduct };
     const { name } = product;
 
     const res = await request(router.httpAdapter.lib)

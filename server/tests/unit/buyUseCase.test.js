@@ -36,7 +36,7 @@ describe("BuyUseCase Unit Test", () => {
   });
 
   it("Should return an error because not found the user", async () => {
-    const { userID } = Object.create(mocks.validUser);
+    const { userID } = { ...mocks.validUser };
 
     sandbox
       .stub(buyUseCase.userRepo, buyUseCase.userRepo.getByID.name)
@@ -48,7 +48,7 @@ describe("BuyUseCase Unit Test", () => {
   });
 
   it("Should return an error because the products are empty", async () => {
-    const { userID } = Object.create(mocks.validUser);
+    const { userID } = { ...mocks.validUser };
 
     sandbox
       .stub(buyUseCase.userRepo, buyUseCase.userRepo.getByID.name)
@@ -60,7 +60,7 @@ describe("BuyUseCase Unit Test", () => {
   });
 
   it("Should return an error because the address is empty", async () => {
-    const { userID } = Object.create(mocks.validUser);
+    const { userID } = { ...mocks.validUser };
 
     sandbox
       .stub(buyUseCase.userRepo, buyUseCase.userRepo.getByID.name)
@@ -72,7 +72,7 @@ describe("BuyUseCase Unit Test", () => {
   });
 
   it("Should return an error because the address number is empty", async () => {
-    const { userID, address } = Object.create(mocks.validUser);
+    const { userID, address } = { ...mocks.validUser };
 
     sandbox
       .stub(buyUseCase.userRepo, buyUseCase.userRepo.getByID.name)
@@ -88,7 +88,7 @@ describe("BuyUseCase Unit Test", () => {
   });
 
   it("Should return an error because the quantity is invalid", async () => {
-    const { userID, address, addressNumber } = Object.create(mocks.validUser);
+    const { userID, address, addressNumber } = { ...mocks.validUser };
 
     sandbox
       .stub(buyUseCase.userRepo, buyUseCase.userRepo.getByID.name)
@@ -105,7 +105,7 @@ describe("BuyUseCase Unit Test", () => {
   });
 
   it("Should return an error because the shipping is invalid", async () => {
-    const { userID, address, addressNumber } = Object.create(mocks.validUser);
+    const { userID, address, addressNumber } = { ...mocks.validUser };
 
     sandbox
       .stub(buyUseCase.userRepo, buyUseCase.userRepo.getByID.name)
@@ -122,7 +122,7 @@ describe("BuyUseCase Unit Test", () => {
   });
 
   it("Should return true because the order fields are valid", async () => {
-    const { userID, address, addressNumber } = Object.create(mocks.validUser);
+    const { userID, address, addressNumber } = { ...mocks.validUser };
 
     sandbox
       .stub(buyUseCase.userRepo, buyUseCase.userRepo.getByID.name)
@@ -173,8 +173,8 @@ describe("BuyUseCase Unit Test", () => {
   });
 
   it("Should return false because ocurred a error when set the order", async () => {
-    const { userID, address, addressNumber } = Object.create(mocks.validUser);
-    const { productID } = Object.create(mocks.validProduct);
+    const { userID, address, addressNumber } = { ...mocks.validUser };
+    const { productID } = { ...mocks.validProduct };
 
     sandbox.stub(buyUseCase, buyUseCase.validate.name).resolves(true);
 
@@ -202,9 +202,9 @@ describe("BuyUseCase Unit Test", () => {
   });
 
   it("Should return false because ocurred a error when reset the cart", async () => {
-    const { userID, address, addressNumber } = Object.create(mocks.validUser);
-    const { productID } = Object.create(mocks.validProduct);
-    const { orderID } = Object.create(mocks.validOrder);
+    const { userID, address, addressNumber } = { ...mocks.validUser };
+    const { productID } = { ...mocks.validProduct };
+    const { orderID } = { ...mocks.validOrder };
 
     sandbox.stub(buyUseCase, buyUseCase.validate.name).resolves(true);
 
@@ -237,9 +237,9 @@ describe("BuyUseCase Unit Test", () => {
   });
 
   it("Should return an array of orderID because the buy was a success", async () => {
-    const { userID, address, addressNumber } = Object.create(mocks.validUser);
-    const { productID } = Object.create(mocks.validProduct);
-    const { orderID } = Object.create(mocks.validOrder);
+    const { userID, address, addressNumber } = { ...mocks.validUser };
+    const { productID } = { ...mocks.validProduct };
+    const { orderID } = { ...mocks.validOrder };
 
     sandbox.stub(buyUseCase, buyUseCase.validate.name).resolves(true);
 

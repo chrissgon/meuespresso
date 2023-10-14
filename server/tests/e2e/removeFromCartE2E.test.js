@@ -11,12 +11,12 @@ import validProduct from "../mocks/validProduct.json" assert { type: "json" };
 import validProductOutsideCart from "../mocks/validProductOutsideCart.json" assert { type: "json" };
 
 const mocks = { validUser, validProduct, validProductOutsideCart };
-const router = new Router()
+const router = new Router();
 
 describe("POST /removeFromCart", () => {
   it("should request POST /removeFromCart route and return HTTP 500", async () => {
-    const { userID } = Object.create(mocks.validUser);
-    const { productID } = Object.create(mocks.validProductOutsideCart);
+    const { userID } = { ...mocks.validUser };
+    const { productID } = { ...mocks.validProductOutsideCart };
 
     const res = await request(router.httpAdapter.lib)
       .post("/removeFromCart")
@@ -27,8 +27,8 @@ describe("POST /removeFromCart", () => {
   });
 
   it("should request POST /removeFromCart route and return HTTP 200", async () => {
-    const { userID } = Object.create(mocks.validUser);
-    const { productID } = Object.create(mocks.validProduct);
+    const { userID } = { ...mocks.validUser };
+    const { productID } = { ...mocks.validProduct };
 
     const res = await request(router.httpAdapter.lib)
       .post("/removeFromCart")

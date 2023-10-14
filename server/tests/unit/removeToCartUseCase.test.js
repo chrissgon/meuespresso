@@ -26,8 +26,8 @@ describe("RemoveFromCartUseCase Unit Test", () => {
   });
 
   it("Should return false because the product doesnt exists", async () => {
-    const { userID } = Object.create(mocks.validUser);
-    const { productID } = Object.create(mocks.validProduct);
+    const { userID } = { ...mocks.validUser };
+    const { productID } = { ...mocks.validProduct };
 
     sandbox
       .stub(
@@ -42,8 +42,8 @@ describe("RemoveFromCartUseCase Unit Test", () => {
   });
 
   it("Should return false because the product was not removed", async () => {
-    const { userID } = Object.create(mocks.validUser);
-    const { productID } = Object.create(mocks.validProduct);
+    const { userID } = { ...mocks.validUser };
+    const { productID } = { ...mocks.validProduct };
 
     sandbox
       .stub(
@@ -64,8 +64,8 @@ describe("RemoveFromCartUseCase Unit Test", () => {
   });
 
   it("Should return true because the product has been removed", async () => {
-    const { userID } = Object.create(mocks.validUser);
-    const { productID } = Object.create(mocks.validProduct);
+    const { userID } = { ...mocks.validUser };
+    const { productID } = { ...mocks.validProduct };
 
     sandbox
       .stub(
