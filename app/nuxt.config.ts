@@ -5,8 +5,6 @@ const BASE_URL = "/";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  ssr: false,
-
   app: {
     head: {
       title: "Meu Expresso",
@@ -30,7 +28,6 @@ export default defineNuxtConfig({
     },
   },
 
-  // devtools: { enabled: true },
   modules: [
     "@nuxt/ui",
     "@vite-pwa/nuxt",
@@ -74,9 +71,5 @@ export default defineNuxtConfig({
       navigateFallback: "/",
       globPatterns: ["**/*.{js,css,html,png,svg,ico}"],
     },
-    // devOptions: {
-    //   enabled: true,
-    //   type: "module",
-    // },
   },
 });
