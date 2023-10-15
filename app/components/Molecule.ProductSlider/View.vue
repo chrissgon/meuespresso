@@ -1,5 +1,8 @@
 <template>
-  <section class="w-full max-w-full lg:max-w-[45%] h-[500px] relative rounded-3xl px-10 md:px-14 py-14 flex flex-col justify-center items-center overflow-hidden text-white bg-gray-900">
+  <section
+    id="slider"
+    class="w-full [&_*]:pointer-events-none [&_*]:select-none max-w-full lg:max-w-[45%] h-[500px] relative rounded-3xl px-10 md:px-14 py-14 flex flex-col justify-center items-center overflow-hidden text-white bg-gray-900"
+  >
     <!-- loading -->
     <MoleculeProductSliderLoading v-show="loading" />
 
@@ -15,13 +18,13 @@
     >
       <!-- image -->
       <figure
-        class="h-24 sm:h-44 md:-mt-24 -mt-14 flex justify-center items-center"
+        class="h-24 pointer-events-none sm:h-44 md:-mt-24 -mt-14 flex justify-center items-center"
       >
         <img
           :src="getCurrentProduct?.image"
           :alt="getCurrentProduct?.name"
           class="w-full max-w-[500px]"
-        >
+        />
       </figure>
 
       <!-- info -->
@@ -88,17 +91,65 @@ function setSlide(slide: number): void {
 function refreshSlideTimer(): void {
   stopSlideTimer();
   slideTimer.value = setInterval(() => {
-    const total = numberOfSlides.value;
-    const sub = total - currentSlide.value || total;
-    const diff = total - sub;
-    const next = diff + 1;
-    setSlide(next);
+    setSlide(getNextSlide());
   }, 5000);
+}
+function getNextSlide(): number {
+  return currentSlide.value === numberOfSlides.value
+    ? 1
+    : currentSlide.value + 1;
+
+  // math expression
+  // next = (numberOfSlides.value - (numberOfSlides.value - currentSlide.value)) + 1
+  // const total = numberOfSlides.value;
+  // const sub = total - currentSlide.value || total;
+  // const diff = total - sub;
+  // return diff + 1;
+}
+function getPreviouSlide(): number {
+  return currentSlide.value - 1 || numberOfSlides.value;
 }
 function stopSlideTimer(): void {
   clearInterval(slideTimer.value);
 }
+function initMouseSlider(): void {
+  if (!process.client) return;
+
+  let touchstartX = 0;
+  let touchendX = 0;
+
+  function checkDirection() {
+    if(Math.abs(touchstartX - touchendX) < 50) return
+
+    if (touchendX < touchstartX) {
+      currentSlide.value = getNextSlide();
+      refreshSlideTimer();
+    }
+    if (touchendX > touchstartX) {
+      currentSlide.value = getPreviouSlide();
+      refreshSlideTimer();
+    }
+  }
+
+  document.addEventListener("touchstart", (e) => {
+    touchstartX = e.changedTouches[0].screenX;
+  });
+
+  document.addEventListener("touchend", (e) => {
+    touchendX = e.changedTouches[0].screenX;
+    checkDirection();
+  });
+  document.addEventListener("mousedown", (e) => {
+    touchstartX = e.screenX;
+  });
+
+  document.addEventListener("mouseup", (e) => {
+    touchendX = e.screenX;
+    checkDirection();
+  });
+}
 refreshSlideTimer();
+initMouseSlider()
 </script>
 
 <style scoped></style>

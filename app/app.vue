@@ -2,7 +2,7 @@
   <div>
     <VitePwaManifest />
     <!-- header main -->
-    <OrganismHeaderMain class="fixed top-0 py-3 sm:px-16 px-10" />
+    <OrganismHeaderMain class="fixed top-0 py-3 pt-5 sm:px-16 px-10" />
     <!-- pages -->
     <NuxtPage class="page-height px-5 sm:px-10 mt-20" />
     <!-- footer main -->
