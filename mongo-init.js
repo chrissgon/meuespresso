@@ -1,4 +1,4 @@
-db = db.getSiblingDB("meuexpresso");
+db = db.getSiblingDB("meuespresso");
 
 db.createCollection("users");
 db.createCollection("products");

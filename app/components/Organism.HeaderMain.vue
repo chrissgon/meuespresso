@@ -7,7 +7,7 @@
     <NuxtLink to="/">
       <img
         src="/logo.svg"
-        alt="Meu Expresso Logo"
+        alt="Meu Espresso Logo"
         class="w-8"
       >
     </NuxtLink>

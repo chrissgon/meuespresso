@@ -35,7 +35,7 @@
     <NuxtLink to="/">
       <img
         src="/logo.svg"
-        alt="Meu Expresso Logo"
+        alt="Meu Espresso Logo"
         class="w-8 sm:w-10"
       >
     </NuxtLink>

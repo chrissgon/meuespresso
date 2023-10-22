@@ -6,11 +6,11 @@
         class="main w-full max-w-full lg:max-w-[55%] lg:h-[500px] py-16 rounded-3xl px-10 md:px-14 flex flex-col justify-center text-white gap-10 overflow-hidden"
       >
         <h1 class="text-3xl md:text-4xl lora">
-          O <b>seu expresso</b> com muito mais sabor ❤️
+          O <b>seu espresso</b> com muito mais sabor ❤️
         </h1>
         <p class="md:text-lg">
           Oferecemos uma experiência única para os amantes de café. Explore,
-          escolha e aproveite os itens do Meu Expresso.
+          escolha e aproveite os itens do Meu Espresso.
         </p>
         <a href="#collection">
           <UButton

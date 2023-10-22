@@ -1,6 +1,6 @@
-![MeuExpresso](./app/public/thumb.png)
+![Meu Espresso](./app/public/thumb.png)
 
-# MeuExpresso
+# Meu Espresso
 
 An e-commerce project for coffee sales ☕🛒
 
@@ -9,7 +9,7 @@ An e-commerce project for coffee sales ☕🛒
 - Clone the repository.
 
 ```bash
-git clone git@github.com:chrissgon/meuexpresso.git
+git clone git@github.com:chrissgon/meuespresso.git
 ```
 
 ## 🚀 Quick Start

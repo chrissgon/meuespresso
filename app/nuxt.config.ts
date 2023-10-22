@@ -7,7 +7,7 @@ const BASE_URL = "/";
 export default defineNuxtConfig({
   app: {
     head: {
-      title: "Meu Expresso",
+      title: "Meu Espresso",
 
       link: [
         {
