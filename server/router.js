@@ -114,5 +114,8 @@ export default class Router {
       "/getUser",
       this.getUserController.handle.bind(this.getUserController)
     );
+    this.httpAdapter.get("/health", (_, res) =>{
+      res.status(200).send("success")
+    })
   }
 }
