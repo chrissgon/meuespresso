@@ -7,7 +7,7 @@ db.users.insertMany([
   {
     userID: "446c5a85-f243-49f5-b31b-90e34e982411",
     email: "christopher@gmail.com",
-    password: "123456",
+    password: "e10adc3949ba59abbe56e057f20f883e",
     name: "Christopher Gonçalves",
     address: "Avenida Castelo Branco",
     addressNumber: 254,
@@ -31,7 +31,7 @@ db.users.insertMany([
         price: 35.0,
         quantity: 3,
         image:
-          "https://www.nespresso.com/ecom/medias/sys_master/public/13753029689374/C-0686-Main-PDP-Lungo-Stockholm-OL.jpg",
+          "https://www.nespresso.com/shared_res/agility/n-components/pdp/sku-main-info/coffee-sleeves/ol/indonesia_XL.png",
         address: "Avenida Castelo Branco",
         addressNumber: 254,
         addressComplement: "Próximo a estação",
@@ -46,12 +46,11 @@ db.users.insertMany([
         price: 37.0,
         quantity: 1,
         image:
-          "https://www.nespresso.com/shared_res/agility/n-components/B2C-enriched-pdp-wex-2022/istanbul-espresso/main-image_L.png",
+          "https://www.nespresso.com/shared_res/agility/global/coffees/ol/sku-main-info-product/vaniglia_2x.png",
         address: "Avenida Castelo Branco",
         addressNumber: 254,
         addressComplement: "Próximo a estação",
         shipping: 12.0,
-        deliveredAt: "2023-09-08T18:36:10.656Z",
         createdAt: "2023-09-08T18:25:27.892Z",
       },
     ],
@@ -59,7 +58,7 @@ db.users.insertMany([
   {
     userID: "3e6417e4-958d-46b7-8da5-259accd2da3c",
     email: "thais@gmail.com",
-    password: "123456",
+    password: "e10adc3949ba59abbe56e057f20f883e",
     name: "Thais Emilly",
     address: " Rua do Limoeiro",
     addressNumber: 11,
@@ -103,7 +102,7 @@ db.products.insertMany([
     price: 37.0,
     quantity: 24,
     image:
-      "https://www.nespresso.com/shared_res/agility/global/coffees/ol/sku-main-info-product/filter-style-intense_open-capsule_2x.png",
+      "https://www.nespresso.com/shared_res/agility/n-components/pdp/sku-main-info/coffee-sleeves/ol/ethiopia_XL.png",
   },
   {
     productID: "50b08f97-0cd6-4d66-b1d3-f5b26ceb7bbc",
@@ -142,7 +141,7 @@ db.products.insertMany([
     price: 35.0,
     quantity: 12,
     image:
-      "https://www.nespresso.com/ecom/medias/sys_master/public/13753027395614/C-0685-Main-PDP-Lungo-Cape-Town-OL.jpg",
+      "https://www.nespresso.com/shared_res/agility/commons/img/coffees/OL/composition/ol_coffee-sleeves_volluto-decaffeinato_16-9.png",
   },
   {
     productID: "b14fb0d8-6afc-4d5b-9b44-14b29189798b",
@@ -152,7 +151,7 @@ db.products.insertMany([
     price: 35.0,
     quantity: 19,
     image:
-      "https://www.nespresso.com/ecom/medias/sys_master/public/13753029689374/C-0686-Main-PDP-Lungo-Stockholm-OL.jpg",
+      "https://www.nespresso.com/shared_res/agility/n-components/pdp/sku-main-info/coffee-sleeves/ol/indonesia_XL.png",
   },
   {
     productID: "4bac3191-b074-47bf-b043-26964fe88176",
@@ -162,6 +161,6 @@ db.products.insertMany([
     price: 37.0,
     quantity: 32,
     image:
-      "https://www.nespresso.com/ecom/medias/sys_master/public/13753036341278/C-0688-Main-PDP-Lungo-Tokyo-OL.jpg",
+      "https://www.nespresso.com/shared_res/agility/global/coffees/ol/sku-main-info-product/vaniglia_2x.png",
   },
 ]);
