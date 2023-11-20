@@ -24,7 +24,7 @@
           :src="getCurrentProduct?.image"
           :alt="getCurrentProduct?.name"
           class="w-full max-w-[500px]"
-        />
+        >
       </figure>
 
       <!-- info -->
