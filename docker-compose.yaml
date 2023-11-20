@@ -1,4 +1,4 @@
-version: '3.1'
+version: "3.1"
 
 services:
   mongo:
@@ -12,24 +12,21 @@ services:
       - 27017:27017
     volumes:
       - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 2s
+      timeout: 2s
+      retries: 5
 
-  mongo-express:
-    container_name: admin
-    image: mongo-express
-    restart: always
-    ports:
-      - 8081:8081
-    environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: root
-      ME_CONFIG_MONGODB_ADMINPASSWORD: pwd
-      ME_CONFIG_MONGODB_URL: mongodb://root:pwd@mongo:27017/
-  
   server:
     container_name: server
     build: ./server
     ports:
       - 3333:3333
-  
+    depends_on:
+      mongo:
+        condition: service_healthy
+
   app:
     container_name: app
     build: ./app
