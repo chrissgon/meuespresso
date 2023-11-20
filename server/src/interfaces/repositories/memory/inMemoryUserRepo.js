@@ -54,14 +54,14 @@ export default class InMemoryUserRepo extends InMemoryBaseRepo {
     return product;
   }
 
-  addToCart({ userID, product }) {
+  addToCart({ userID, cartItem }) {
     if (!this.users) return;
 
     const user = this.getByID({ userID });
 
     if (!user) return;
 
-    user.cart.push(product);
+    user.cart.push(cartItem);
 
     return true;
   }

@@ -1,5 +1,7 @@
 "use strict";
 
+import { randomUUID } from "node:crypto";
+
 export default class AddToCartUseCase {
   constructor({ userRepo, productRepo }) {
     this.userRepo = userRepo;
@@ -20,11 +22,11 @@ export default class AddToCartUseCase {
       return false;
     }
 
-    const product = { ...entireProduct };
-    delete product.description;
-    product.quantity = quantity;
+    const cartItem = { ...entireProduct, cartID: randomUUID() };
+    delete cartItem.description;
+    cartItem.quantity = quantity;
 
-    const ok = await this.userRepo.addToCart({ userID, product });
+    const ok = await this.userRepo.addToCart({ userID, cartItem });
 
     return !!ok;
   }

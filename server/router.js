@@ -28,16 +28,14 @@ import UpdateUserController from "./src/interfaces/controllers/updateUserControl
 import GetUserController from "./src/interfaces/controllers/getUserController.js";
 
 export default class Router {
-  constructor() {
+  constructor({userRepo, productRepo, httpAdapter, paymentAdapter}) {
     // repos
-    // this.userRepo = new MongoDBUserRepo({ mongodb });
-    // this.productRepo = new MongoDBProductRepo({ mongodb });
-    this.userRepo = new InMemoryUserRepo();
-    this.productRepo = new InMemoryProductRepo();
+    this.userRepo = userRepo;
+    this.productRepo = productRepo;
 
     // adapters
-    this.httpAdapter = new ExpressAdapter({ express });
-    this.paymentAdapter = new PaymentAdapter();
+    this.httpAdapter = httpAdapter;
+    this.paymentAdapter = paymentAdapter;
 
     // usecases
     this.loginUseCase = new LoginUseCase({ userRepo: this.userRepo });
