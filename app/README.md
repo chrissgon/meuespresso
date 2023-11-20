@@ -1,75 +1,33 @@
-# Nuxt 3 Minimal Starter
+# Meu Espresso - App
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+An e-commerce project for coffee sales ☕🛒
 
-## Setup
+## 📦 Install
 
-Make sure to install the dependencies:
-
-```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+- Install dependencies.
 
 ```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
+pnpm i
 ```
 
-## Production
+## 🚀 Quick Start
 
-Build the application for production:
+- Run app.
 
 ```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
+pnpm dev
 ```
 
-Locally preview production build:
+## 🔒 Environment Variables
 
-```bash
-# npm
-npm run preview
+When you run this project, you need set the following environment variables:
 
-# pnpm
-pnpm run preview
+- `SERVER_URL`: http://localhost:3333
 
-# yarn
-yarn preview
+## 📚 Anotations
 
-# bun
-bun run preview
-```
+App hosted in [http://localhost:3000/](http://localhost:3000/).
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## ❤️ Authors
+
+- [@chrissgon](https://www.github.com/chrissgon)

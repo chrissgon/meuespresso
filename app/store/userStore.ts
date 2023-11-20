@@ -36,7 +36,7 @@ export const useUserStore = defineStore(
     }
 
     async function getUser(): Promise<void> {
-      if(!user.value) return
+      if (!user.value) return;
 
       const operation = EOperations.UserGet;
       const err = EErrors.UserGet;
@@ -55,7 +55,7 @@ export const useUserStore = defineStore(
       }
 
       removeError({ operation });
-      user.value = data.value
+      user.value = data.value;
     }
 
     async function addToCart(product: IProduct): Promise<void> {
@@ -109,7 +109,7 @@ export const useUserStore = defineStore(
       }
 
       removeError({ operation });
-      getUser()
+      getUser();
     }
     async function buy({
       address,
@@ -142,7 +142,7 @@ export const useUserStore = defineStore(
       }
 
       removeError({ operation });
-      getUser()
+      getUser();
     }
     async function updateUser({
       address,
