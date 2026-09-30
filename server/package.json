@@ -24,5 +24,6 @@
     "mongodb": "^6.1.0"
   },
   "author": "Christopher Gonçalves <chrissgon.dev@gmail.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "packageManager": "pnpm@9.2.0"
 }
