@@ -1,4 +1,4 @@
-import { EErrors, EOperations, IProducts } from "../types";
+import { EErrors, EOperations, type IProducts } from "../types";
 
 export const useProductStore = defineStore("productStore", () => {
   // data
@@ -26,8 +26,10 @@ export const useProductStore = defineStore("productStore", () => {
 
     removeError({ operation });
 
-    products.value = data.value;
-    productsFiltered.value = data.value;
+    if (data.value) {
+      products.value = data.value;
+      productsFiltered.value = data.value;
+    }
   }
 
   async function findProducts(filters: any): Promise<void> {
@@ -49,7 +51,9 @@ export const useProductStore = defineStore("productStore", () => {
 
     removeError({ operation });
 
-    productsFiltered.value = data.value;
+    if (data.value) {
+      productsFiltered.value = data.value;
+    }
   }
 
   return {

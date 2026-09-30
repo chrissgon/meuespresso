@@ -76,3 +76,10 @@ export enum EErrors {
   UserUpdate = "Erro ao atualizar o usuário",
   UserGet = "Erro ao atualizar o usuário",
 }
+
+export interface FormError<T extends string = string> {
+  path: T
+  message: string
+}
+
+export type FormSubmitEvent<T> = SubmitEvent & { data: T }

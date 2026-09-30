@@ -7,6 +7,8 @@ const BASE_URL = "/";
 export default defineNuxtConfig({
   ssr: false,
 
+  compatibilityDate: '2025-09-11',
+
   app: {
     head: {
       title: "Meu Espresso",

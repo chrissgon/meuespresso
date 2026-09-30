@@ -133,8 +133,7 @@
 </template>
 
 <script setup lang="ts">
-import type { FormError, FormSubmitEvent } from "@nuxt/ui/dist/runtime/types";
-import { IUser } from "~/types";
+import { type FormError, type FormSubmitEvent, type IUser } from "~/types";
 
 // props
 interface IProps{

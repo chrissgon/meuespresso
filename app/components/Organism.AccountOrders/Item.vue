@@ -57,7 +57,7 @@
 </template>
 
 <script setup lang="ts">
-import { IOrder } from "~/types";
+import { type IOrder } from "~/types";
 
 // props
 interface IProps {

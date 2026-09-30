@@ -62,7 +62,7 @@
 </template>
 
 <script setup lang="ts">
-import { IProduct } from "~/types";
+import { type IProduct } from "~/types";
 
 // props
 interface IProps {

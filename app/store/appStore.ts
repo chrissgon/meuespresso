@@ -1,4 +1,4 @@
-import { INav } from "../types";
+import type { INav } from "~/types";
 
 export const useAppStore = defineStore(
   "appStore",

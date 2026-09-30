@@ -60,7 +60,7 @@
 </template>
 
 <script setup lang="ts">
-import { ICartItem } from "~/types";
+import { type ICartItem } from "~/types";
 
 // props
 interface IProps {

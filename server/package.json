@@ -8,6 +8,7 @@
     "dev": "node .",
     "test": "npx mocha -w --parallel",
     "tests": "npx mocha -w --parallel **/**/*.test.js",
+    "test:ci": "mocha --parallel \"tests/**/*.test.js\"",
     "tests:cov": "npx c8 npx mocha --parallel **/unit/*.test.js"
   },
   "devDependencies": {
@@ -23,5 +24,6 @@
     "mongodb": "^6.1.0"
   },
   "author": "Christopher Gonçalves <chrissgon.dev@gmail.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "packageManager": "pnpm@9.2.0"
 }

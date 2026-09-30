@@ -45,7 +45,8 @@
 </template>
 
 <script setup lang="ts">
-import { ITab } from "../types";
+import type { ITab } from '~/types';
+
 
 // store
 const appStore = useAppStore();
