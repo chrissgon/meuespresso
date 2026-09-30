@@ -14,10 +14,32 @@ git clone git@github.com:chrissgon/meuespresso.git
 
 ## 🚀 Quick Start
 
-- Run containers.
+- Run containers (Docker with Compose v2). This builds the app and the server images and starts them with MongoDB, which is seeded by `mongo-init.js` with 7 products and sample users.
 
 ```bash
-docker-compose up -d --build
+docker compose up -d --build
+```
+
+- Stop the containers and remove the database volume.
+
+```bash
+docker compose down -v
+```
+
+- Run the server tests (Node 24, pnpm 9.2.0 through corepack).
+
+```bash
+cd server
+pnpm install --frozen-lockfile
+pnpm run test:ci
+```
+
+- Build the app (bun).
+
+```bash
+cd app
+bun install --frozen-lockfile
+bun run build
 ```
 
 ## 📚 Anotations
@@ -25,6 +47,10 @@ docker-compose up -d --build
 App hosted in [http://localhost:3000/](http://localhost:3000/).
 
 Server hosted in [http://localhost:3333/](http://localhost:3333/).
+
+The MongoDB user and password in `docker-compose.yaml` (and in `server/src/frameworks/mongodb.js`) are for local development only. Do not use them in a deployed environment.
+
+While MongoDB is down, the server answers `503` and reconnects on its own when the database is back.
 
 ## 🔗 References
 
