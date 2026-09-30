@@ -4,7 +4,7 @@ import { describe, it, beforeEach } from "mocha";
 import { expect } from "chai";
 import { createSandbox } from "sinon";
 
-import validUser from "../mocks/validUser.json" assert { type: "json" };
+import validUser from "../mocks/validUser.json" with { type: "json" };
 
 import InMemoryUserRepo from "../../src/interfaces/repositories/memory/inMemoryUserRepo.js";
 import UpdateUserUseCase from "../../src/usecases/updateUserUseCase.js";

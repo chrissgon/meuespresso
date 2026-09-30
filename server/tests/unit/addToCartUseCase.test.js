@@ -4,8 +4,8 @@ import { describe, it, beforeEach } from "mocha";
 import { expect } from "chai";
 import { createSandbox } from "sinon";
 
-import validUser from "../mocks/validUser.json" assert { type: "json" };
-import validProduct from "../mocks/validProduct.json" assert { type: "json" };
+import validUser from "../mocks/validUser.json" with { type: "json" };
+import validProduct from "../mocks/validProduct.json" with { type: "json" };
 
 import InMemoryUserRepo from "../../src/interfaces/repositories/memory/inMemoryUserRepo.js";
 import InMemoryProductRepo from "../../src/interfaces/repositories/memory/inMemoryProductRepo.js";

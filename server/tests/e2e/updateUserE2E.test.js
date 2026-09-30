@@ -14,7 +14,7 @@ import PaymentAdapter from "../../src/interfaces/adapters/paymentAdapter.js";
 import InMemoryUserRepo from "../../src/interfaces/repositories/memory/inMemoryUserRepo.js";
 import InMemoryProductRepo from "../../src/interfaces/repositories/memory/inMemoryProductRepo.js";
 
-import validUser from "../mocks/validUser.json" assert { type: "json" };
+import validUser from "../mocks/validUser.json" with { type: "json" };
 
 const mocks = { validUser };
 
