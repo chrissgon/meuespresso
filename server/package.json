@@ -8,6 +8,7 @@
     "dev": "node .",
     "test": "npx mocha -w --parallel",
     "tests": "npx mocha -w --parallel **/**/*.test.js",
+    "test:ci": "mocha --parallel \"tests/**/*.test.js\"",
     "tests:cov": "npx c8 npx mocha --parallel **/unit/*.test.js"
   },
   "devDependencies": {
