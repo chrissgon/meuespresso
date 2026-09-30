@@ -7,6 +7,7 @@ export const useBaseFetch = () => {
         ...options,
         method: "POST",
         baseURL: config.public.SERVER_URL,
+        key: String(Math.random()),
       });
     },
     get<T>(url: string, options?: any) {
@@ -14,6 +15,7 @@ export const useBaseFetch = () => {
         ...options,
         method: "GET",
         baseURL: config.public.SERVER_URL,
+        key: String(Math.random()),
       });
     },
   };

@@ -32,7 +32,7 @@ Server hosted in [http://localhost:3333/](http://localhost:3333/).
 - [Implementing Clean Architecture in Node.js Applications](https://appmaster.io/blog/clean-architecture-nodejs-applications)
 - [Clean Architecture em Node.js com Express: Um guia prático para desenvolvedores](https://culturadev.com.br/clean-architecture-em-node-js-com-express-um-guia-pratico-para-desenvolvedores/)
 - [Youtube - 112 - Clean Architecture com TypeScript & Node.js | ✨ API COMPLETA ✨](https://www.youtube.com/watch?v=7BNoxRntLYo)
-- [Figma Design](https://www.figma.com/file/RvD6nikB1px2Kpt1VJfsxV/Pokedex?t=UtfWb2l7p2VAcdgF-6)
+- [Figma Design](https://www.figma.com/design/8GOWufoV9ATFNuR6hm5d2h/MeuExpresso?t=DTNcbCwpxznV0Kwt-1)
 
 ## ❤️ Authors
 

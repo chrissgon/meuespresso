@@ -3,20 +3,14 @@
     class="h-fit flex flex-col w-full max-w-[400px] justify-center items-center rounded-lg gap-4 md:border dark:border-gray-800 md:px-10 md:py-24 py-14"
   >
     <!-- draw -->
-    <img
-      src="/coffee-draw.svg"
-      class="w-24 -mt-5"
-      alt="Coffe Draw"
-    >
+    <img src="/coffee-draw.svg" class="w-24 -mt-5" alt="Coffe Draw" />
 
     <!-- header -->
     <header class="text-center my-5">
       <h1 class="lora text-xl">
         <b>Bem vindo visitante!</b>
       </h1>
-      <p class="text-sm">
-        Insira seu email e senha
-      </p>
+      <p class="text-sm">Insira seu email e senha</p>
     </header>
 
     <!-- error alert -->
@@ -36,31 +30,17 @@
       @submit="$emit('login', state)"
     >
       <!-- email -->
-      <UFormGroup
-        label="Email"
-        name="email"
-        class="w-full"
-        required
-      >
+      <UFormGroup label="Email" name="email" class="w-full" required>
         <UInput
           v-model="state.email"
           placeholder="meuemail@gmail.com"
           size="lg"
         />
       </UFormGroup>
-      
+
       <!-- password -->
-      <UFormGroup
-        label="Senha"
-        name="password"
-        class="w-full"
-        required
-      >
-        <UInput
-          v-model="state.password"
-          type="password"
-          size="lg"
-        />
+      <UFormGroup label="Senha" name="password" class="w-full" required>
+        <UInput v-model="state.password" type="password" size="lg" />
       </UFormGroup>
 
       <!-- submit -->
@@ -79,7 +59,7 @@
 </template>
 
 <script setup lang="ts">
-import type { FormError } from "@nuxt/ui/dist/runtime/types";
+import type { FormError } from '~/types';
 
 // props
 interface IProps {

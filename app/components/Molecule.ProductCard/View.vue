@@ -22,14 +22,14 @@
         :key="i"
         :product="product"
         :loading="loadingItem"
-        @add-to-cart="(product) => $emit('addToCart', product)"
+        @add-to-cart="addToCart"
       />
     </article>
   </section>
 </template>
 
 <script setup lang="ts">
-import { IProducts } from "~/types";
+import { type IProduct, type IProducts } from "~/types";
 
 // props
 interface IProps {
@@ -39,8 +39,14 @@ interface IProps {
 }
 defineProps<IProps>();
 
+// methods
+function addToCart(product: IProduct): void {
+  emit("addToCart", product);
+}
+
+
 // emits
-defineEmits(["addToCart"]);
+const emit = defineEmits(["addToCart"]);
 </script>
 
 <style scoped></style>

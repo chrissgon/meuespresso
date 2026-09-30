@@ -25,7 +25,7 @@
 </template>
 
 <script setup lang="ts">
-import { ICart } from "~/types";
+import { type ICart } from "~/types";
 
 // props
 interface IProps {

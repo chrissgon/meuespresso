@@ -26,7 +26,7 @@
 </template>
 
 <script setup lang="ts">
-import { IOrders, IUser } from "~/types";
+import type { IOrders, IUser } from "~/types";
 // props
 interface IProps {
   user: IUser;

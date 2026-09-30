@@ -1,4 +1,10 @@
-import { EErrors, EOperations, ICartItem, IProduct, IUser } from "~/types";
+import {
+  EErrors,
+  EOperations,
+  type ICartItem,
+  type IProduct,
+  type IUser,
+} from "~/types";
 
 export const useUserStore = defineStore(
   "userStore",
@@ -28,6 +34,9 @@ export const useUserStore = defineStore(
       }
 
       removeError({ operation });
+
+      if (!data.value) return;
+
       user.value = data.value;
     }
 
@@ -36,17 +45,17 @@ export const useUserStore = defineStore(
     }
 
     async function getUser(): Promise<void> {
-      if (!user.value) return;
+      // if (!user.value) return;
 
       const operation = EOperations.UserGet;
       const err = EErrors.UserGet;
-
+      
       startOperation({ operation });
-
+      
       const body = { userID: user.value?.userID };
-
+      
       const { data, error } = await post<IUser>("/getUser", { body });
-
+      
       stopOperation({ operation });
 
       if (error.value) {
@@ -55,6 +64,9 @@ export const useUserStore = defineStore(
       }
 
       removeError({ operation });
+
+      if (!data.value) return;
+
       user.value = data.value;
     }
 
@@ -173,6 +185,8 @@ export const useUserStore = defineStore(
       }
 
       removeError({ operation });
+
+      if (!data.value) return;
 
       user.value = data.value;
     }

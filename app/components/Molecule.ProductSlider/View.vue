@@ -24,7 +24,7 @@
           :src="getCurrentProduct?.image"
           :alt="getCurrentProduct?.name"
           class="w-full max-w-[500px]"
-        >
+        />
       </figure>
 
       <!-- info -->
@@ -54,7 +54,7 @@
 </template>
 
 <script setup lang="ts">
-import { IProduct, IProducts } from "~/types";
+import type { IProduct, IProducts } from "~/types";
 
 // props
 interface IProps {
@@ -75,8 +75,8 @@ const numberOfSlides = computed<number>(() => {
 const isActive = computed<Function>(() => (slide: number) => {
   return currentSlide.value === slide;
 });
-const getCurrentProduct = computed<IProduct | null>(() => {
-  if (!props.products) return null;
+const getCurrentProduct = computed<IProduct | undefined>(() => {
+  if (!props.products) return;
   return props.products[currentSlide.value - 1];
 });
 
@@ -119,7 +119,7 @@ function initMouseSlider(): void {
   let touchendX = 0;
 
   function checkDirection() {
-    if(Math.abs(touchstartX - touchendX) < 50) return
+    if (Math.abs(touchstartX - touchendX) < 50) return;
 
     if (touchendX < touchstartX) {
       currentSlide.value = getNextSlide();
@@ -132,10 +132,12 @@ function initMouseSlider(): void {
   }
 
   document.addEventListener("touchstart", (e) => {
+    if(!e.changedTouches[0]) return
     touchstartX = e.changedTouches[0].screenX;
   });
-
+  
   document.addEventListener("touchend", (e) => {
+    if(!e.changedTouches[0]) return
     touchendX = e.changedTouches[0].screenX;
     checkDirection();
   });
@@ -149,7 +151,7 @@ function initMouseSlider(): void {
   });
 }
 refreshSlideTimer();
-initMouseSlider()
+initMouseSlider();
 </script>
 
 <style scoped></style>
